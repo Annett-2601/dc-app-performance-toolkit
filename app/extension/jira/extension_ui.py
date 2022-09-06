@@ -37,7 +37,6 @@ def app_specific_action(webdriver, datasets):
         @print_timing("selenium_app_custom_action:view_issue")
         def sub_measure():
             page.go_to_url(f"{JIRA_SETTINGS.server_url}/browse/{issue_key}")
-            page.wait_until_visible((By.ID, "summary-val"))  # Wait for summary field visible
             
             # click on link Smart Field Configuration
             configuration_text = page.get_element((By.ID, "smart-fields-config-link")).text
