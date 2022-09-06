@@ -38,7 +38,26 @@ def app_specific_action(webdriver, datasets):
         def sub_measure():
             page.go_to_url(f"{JIRA_SETTINGS.server_url}/browse/{issue_key}")
             page.wait_until_visible((By.ID, "summary-val"))  # Wait for summary field visible
+            
+            # click on link Smart Field Configuration
+            configuration_text = page.get_element((By.ID, "smart-fields-config-link")).text
+            assert configuration_text == "Configuration"
             page.get_element((By.ID, "smart-fields-config-link")).click()
+            
+            # click on button Create Smart Field
+            page.get_element((By.ID, "add-new-field-button")).click()
+            
+            # fill out the form for creating a new smart field
+            # input data into name field
+            page.get_element((By.ID, "smart-field-name")).send_keys("1 Single/Buffered")
+            attr_name = page.get_element((By.ID, "smart-field-name").get_attribute("value")
+            assert attr_name == "1 Single/Buffered"
+                                         
+            # input data into description
+            page.get_element((By.ID, "smart-field-description")).send_keys("Selenium Test")
+            attr_description = page.get_element((By.ID, "smart-field-description")).get_attribute("value")
+            assert attr_description == "Selenium Test"
+            
         sub_measure()
     measure()
 
