@@ -39,11 +39,14 @@ def app_specific_action(webdriver, datasets):
             page.go_to_url(f"{JIRA_SETTINGS.server_url}/browse/{issue_key}")
             
             # # click on dropdown menu Jira Administration
-wait.until(ExpectedCond.presence_of_element_located((By.ID, 'admin_menu')))
+
+##wait.until(ExpectedCond.presence_of_element_located((By.ID, 'admin_menu')))
+page.wait_until_presence_of_element_located((By.ID, 'admin_menu'))
 page.get_element((By.ID, 'admin_menu')).click()
 
 # click on admin plugins menu(Manage apps)
-wait.until(ExpectedCond.presence_of_element_located((By.ID, 'admin_plugins_menu')))
+##wait.until(ExpectedCond.presence_of_element_located((By.ID, 'admin_plugins_menu')))
+page.wait_until_resence_of_element_located((By.ID, 'admin_plugins_menu'))
 page.get_element((By.ID, "admin_plugins_menu")).click()
 
 # input password(admin) into Administrator Access
