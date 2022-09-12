@@ -38,6 +38,25 @@ def app_specific_action(webdriver, datasets):
         def sub_measure():
             page.go_to_url(f"{JIRA_SETTINGS.server_url}/browse/{issue_key}")
             
+            # # click on dropdown menu Jira Administration
+wait.until(ExpectedCond.presence_of_element_located((By.ID, 'admin_menu')))
+page.get_element((By.ID, 'admin_menu')).click()
+
+# click on admin plugins menu(Manage apps)
+wait.until(ExpectedCond.presence_of_element_located((By.ID, 'admin_plugins_menu')))
+page.get_element((By.ID, "admin_plugins_menu")).click()
+
+# input password(admin) into Administrator Access
+page.get_element((By.ID, "login-form-authenticatePassword")).send_keys("admin")
+attr_password_auth = page.get_element((By.ID, "login-form-authenticatePassword")).get_attribute('value')
+assert attr_password_auth == 'admin'
+
+# click on button Confirm
+attr_button_auth = page.get_element((By.ID, "login-form-submit")).get_attribute('value')
+assert attr_button_auth == "Confirm"
+page.get_element((By.ID, "login-form-submit")).click()
+            
+            
             # click on link Smart Field Configuration
             configuration_text = page.get_element((By.ID, "smart-fields-config-link")).text
             assert configuration_text == "Configuration"
@@ -49,7 +68,7 @@ def app_specific_action(webdriver, datasets):
             # fill out the form for creating a new smart field
             # input data into name field
             page.get_element((By.ID, "smart-field-name")).send_keys("1 Single/Buffered")
-            attr_name = page.get_element((By.ID, "smart-field-name").get_attribute("value")
+            attr_name = page.get_element((By.ID, "smart-field-name")).get_attribute("value")
             assert attr_name == "1 Single/Buffered"
                                          
             # input data into description
