@@ -12,6 +12,7 @@ from util.conf import JIRA_SETTINGS
 
 def app_specific_action(webdriver, datasets):
     page = BasePage(webdriver)
+    issue_key = ""
     if datasets['custom_issues']:
         issue_key = datasets['custom_issue_key']
 
