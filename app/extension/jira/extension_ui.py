@@ -48,9 +48,9 @@ def app_specific_action(webdriver, datasets):
             assert attr_username == "admin"
 
             # input data into password field(admin)
-   page.wait_until_presence_of_element_located((By.ID, "login-form-username"))         
+   page.wait_until_presence_of_element_located((By.ID, "login-form-password"))         
             page.get_element((By.ID, "login-form-password")).send_keys("admin")
-            attr_password = page.get_element((By.ID, "login-form-username")).get_attribute("value")
+            attr_password = page.get_element((By.ID, "login-form-password")).get_attribute("value")
             assert attr_password == "admin"
 
             # click button "Log in"
