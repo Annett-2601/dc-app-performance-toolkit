@@ -42,13 +42,13 @@ def app_specific_action(webdriver, datasets):
             page.go_to_url(f"{JIRA_SETTINGS.server_url}/browse/{issue_key}")
             
             # input data into username field(admin)
-            page.wait_until_presence_of_element_located((By.ID, "login-form-username"))
+            page.wait_until_visible((By.ID, "login-form-username"))
             page.get_element((By.ID, "login-form-username")).send_keys("admin")
             attr_username = page.get_element((By.ID, "login-form-username")).get_attribute("value")
             assert attr_username == "admin"
 
             # input data into password field(admin)
-            page.wait_until_presence_of_element_located((By.ID, "login-form-password"))         
+            page.wait_until_visible((By.ID, "login-form-password"))         
             page.get_element((By.ID, "login-form-password")).send_keys("admin")
             attr_password = page.get_element((By.ID, "login-form-password")).get_attribute("value")
             assert attr_password == "admin"
@@ -65,7 +65,7 @@ def app_specific_action(webdriver, datasets):
 
             # click on admin plugins menu(Manage apps)
             ##wait.until(ExpectedCond.presence_of_element_located((By.ID, 'admin_plugins_menu')))
-            page.wait_until_resence_of_element_located((By.ID, 'admin_plugins_menu'))
+            page.wait_until_presence_of_element_located((By.ID, 'admin_plugins_menu'))
             page.get_element((By.ID, "admin_plugins_menu")).click()
 
             # input password(admin) into Administrator Access
