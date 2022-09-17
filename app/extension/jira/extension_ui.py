@@ -57,16 +57,16 @@ def app_specific_action(webdriver, datasets):
              #page.get_element((By.ID, "login-form-submit")).click()
 
              # wait for summary field visible
-             page.wait_until_presence_of_element_located((By.ID, 'summary-val'))
+             page.wait_until_present((By.ID, 'summary-val'))
              summary_val_text = page.get_element((By.ID, 'summary-val')).text
              assert summary_val_text == "SEL-1"
 
              # click on dropdown menu Jira Administration
-             page.wait_until_presence_of_element_located((By.ID, 'admin_menu'))
+             page.wait_until_present((By.ID, 'admin_menu'))
              page.get_element((By.ID, 'admin_menu')).click()
 
              # click on admin plugins menu(Manage apps)
-             page.wait_until_presence_of_element_located((By.ID, 'admin_plugins_menu'))
+             page.wait_until_present((By.ID, 'admin_plugins_menu'))
              page.get_element((By.ID, "admin_plugins_menu")).click()
 
              # input password(admin) into Administrator Access
@@ -157,9 +157,9 @@ def app_specific_action(webdriver, datasets):
              assert response_text == 'OK'
 
              # input 42 into test field
-             page.wait_until_presence_of_element_located((By.CSS_SELECTOR, '.select2-selection__placeholder'))
+             page.wait_until_present((By.CSS_SELECTOR, '.select2-selection__placeholder'))
              page.get_element((By.CSS_SELECTOR, '.select2-selection__placeholder')).click()
-             page.wait_until_presence_of_element_located((By.CSS_SELECTOR, '.select2-search__field'))
+             page.wait_until_present((By.CSS_SELECTOR, '.select2-search__field'))
              page.get_element((By.CSS_SELECTOR, '.select2-search__field')).send_keys('42')
              page.get_element((By.CSS_SELECTOR, '.select2-search__field')).send_keys(Keys.ENTER)
              input_text = page.get_element((By.CSS_SELECTOR, '.select2-selection__rendered')).text
@@ -171,7 +171,7 @@ def app_specific_action(webdriver, datasets):
              page.get_element((By.ID, 'save-smart-field-configuration')).click()
 
              # notification "success"
-             page.wait_until_presence_of_element_located((By.CSS_SELECTOR, '#smart-field-massage-bar > div'))
+             page.wait_until_present((By.CSS_SELECTOR, '#smart-field-massage-bar > div'))
              notif = page.get_element((By.CSS_SELECTOR, '#smart-field-massage-bar > div')).text
              assert notif == 'Configuration was successfully saved!'
 
@@ -182,13 +182,13 @@ def app_specific_action(webdriver, datasets):
              page.get_element((By.ID, 'browse_link')).click()
 
              # click on "View All Projects"
-             page.wait_until_presence_of_element_located((By.ID, 'project_view_all_link_lnk'))
+             page.wait_until_present((By.ID, 'project_view_all_link_lnk'))
              view_all_text = page.get_element((By.ID, 'project_view_all_link_lnk')).text
              assert view_all_text == "View All Projects"
              page.get_element((By.ID, 'project_view_all_link_lnk')).click()
 
              # input name of our project
-             page.wait_until_presence_of_element_located((By.ID, 'project-filter-text'))
+             page.wait_until_present((By.ID, 'project-filter-text'))
              page.get_element((By.ID, 'project-filter-text')).send_keys('SeleniumTest')
              attr_project_sel = page.get_element((By.ID, 'project-filter-text')).get_attribute('value')
              assert attr_project_sel == "SeleniumTest"
@@ -200,13 +200,13 @@ def app_specific_action(webdriver, datasets):
              page.get_element((By.CSS_SELECTOR, '#projects > div > table > tbody > tr > td.cell-type-name > a')).click()
 
              # click on Edit button on  our issue
-             page.wait_until_presence_of_element_located((By.ID, 'edit-issue'))
+             page.wait_until_present((By.ID, 'edit-issue'))
              edit_button_text = page.get_element((By.ID, 'edit-issue')).text
              assert edit_button_text == "Edit"
              page.get_element((By.ID, 'edit-issue')).click()
 
              # click on Configure Fields
-             page.wait_until_presence_of_element_located((By.ID, 'qf-field-picker-trigger'))
+             page.wait_until_present((By.ID, 'qf-field-picker-trigger'))
              config_fields_text = page.get_element((By.ID, 'qf-field-picker-trigger')).text
              assert config_fields_text == "Configure Fields"
              page.get_element((By.ID, 'qf-field-picker-trigger')).click()
@@ -216,9 +216,9 @@ def app_specific_action(webdriver, datasets):
              page.get_element((By.CSS_SELECTOR, '#qf-fieldpicker-inline > div > div > div.qf-picker-content > fieldset > ul > li:nth-child(13) > label > input[type=checkbox]')).click()
 
              # input 42 into smart field
-             page.wait_until_presence_of_element_located((By.CSS_SELECTOR, '.select2-selection__placeholder'))
+             page.wait_until_present((By.CSS_SELECTOR, '.select2-selection__placeholder'))
              page.get_element((By.CSS_SELECTOR, '.select2-selection__placeholder')).click()
-             page.wait_until_presence_of_element_located((By.CSS_SELECTOR, '.select2-search__field'))
+             page.wait_until_present((By.CSS_SELECTOR, '.select2-search__field'))
              page.get_element((By.CSS_SELECTOR, '.select2-search__field')).send_keys('42')
              page.get_element((By.CSS_SELECTOR, '.select2-search__field')).send_keys(Keys.ENTER)
              input_field_text = page.get_element((By.CSS_SELECTOR, '.select2-selection__rendered')).text
@@ -230,20 +230,20 @@ def app_specific_action(webdriver, datasets):
              page.get_element((By.ID, 'edit-issue-submit')).click()
 
              # check title of our new smart filed
-             page.wait_until_presence_of_element_located((By.CSS_SELECTOR, '#rowForcustomfield_11133 > div > strong'))
+             page.wait_until_present((By.CSS_SELECTOR, '#rowForcustomfield_11133 > div > strong'))
              sf_text = page.get_element((By.CSS_SELECTOR, '#rowForcustomfield_11133 > div > strong')).text
              assert sf_text == 'Single Buffered:'
 
              # check custom field value
-             page.wait_until_presence_of_element_located((By.ID, 'customfield_11133-val'))
+             page.wait_until_present((By.ID, 'customfield_11133-val'))
              value_text = page.get_element((By.ID, 'customfield_11133-val')).text
              assert value_text == '42'
 
              # change value of custom field
              page.get_element((By.ID, 'customfield_11133-val')).click()
-             page.wait_until_presence_of_element_located((By.ID, 'select2-customfield_11133-container'))
+             page.wait_until_present((By.ID, 'select2-customfield_11133-container'))
              page.get_element((By.ID, 'select2-customfield_11133-container')).click()
-             page.wait_until_presence_of_element_located((By.CSS_SELECTOR, '.select2-search__field'))
+             page.wait_until_present((By.CSS_SELECTOR, '.select2-search__field'))
              page.get_element((By.CSS_SELECTOR, '.select2-search__field')).send_keys('97')
              page.get_element((By.CSS_SELECTOR, '.select2-search__field')).send_keys(Keys.ENTER)
              page.get_element((By.CSS_SELECTOR, '#customfield_11133-form > div.save-options > button.aui-button.submit')).click()
