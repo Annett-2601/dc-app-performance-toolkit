@@ -34,8 +34,8 @@ def app_specific_action(webdriver, datasets):
         app_specific_user_login(username='admin', password='admin')
     measure()
     
-     @print_timing("selenium_app_custom_action")
-     def measure():
+    @print_timing("selenium_app_custom_action")
+    def measure():
          @print_timing("selenium_app_custom_action:view_issue")
          def sub_measure():
              page.go_to_url(f"{JIRA_SETTINGS.server_url}/browse/{issue_key}")
