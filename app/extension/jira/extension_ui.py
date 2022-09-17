@@ -248,6 +248,6 @@ def app_specific_action(webdriver, datasets):
              page.get_element((By.CSS_SELECTOR, '.select2-search__field')).send_keys(Keys.ENTER)
              page.get_element((By.CSS_SELECTOR, '#customfield_11133-form > div.save-options > button.aui-button.submit')).click()
              page.wait_until_any_ec_text_presented_in_el((By.ID, 'customfield_11133-val'), '97')
-            
-       sub_measure()
+         
+        sub_measure()
     measure()
