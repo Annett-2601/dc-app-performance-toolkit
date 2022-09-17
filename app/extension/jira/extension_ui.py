@@ -19,20 +19,20 @@ def app_specific_action(webdriver, datasets):
 #     NOTE: If app_specific_action is running as specific user, make sure that app_specific_action is running
 #     just before test_2_selenium_z_log_out action
     
-#    @print_timing("selenium_app_specific_user_login")
-#   def measure():
-#        def app_specific_user_login(username='admin', password='admin'):
-#            login_page = Login(webdriver)
-#            login_page.delete_all_cookies()
-#            login_page.go_to()
-#            login_page.set_credentials(username=username, password=password)
-#            if login_page.is_first_login():
-#                login_page.first_login_setup()
-#            if login_page.is_first_login_second_page():
-#                login_page.first_login_second_page_setup()
-#            login_page.wait_for_page_loaded()
-#        app_specific_user_login(username='admin', password='admin')
-#    measure()
+@print_timing("selenium_app_specific_user_login")
+    def measure():
+        def app_specific_user_login(username='admin', password='admin'):
+            login_page = Login(webdriver)
+            login_page.delete_all_cookies()
+            login_page.go_to()
+            login_page.set_credentials(username=username, password=password)
+            if login_page.is_first_login():
+                login_page.first_login_setup()
+            if login_page.is_first_login_second_page():
+                login_page.first_login_second_page_setup()
+            login_page.wait_for_page_loaded()
+        app_specific_user_login(username='admin', password='admin')
+    measure()
 
     @print_timing("selenium_app_custom_action")
     def measure():
@@ -42,19 +42,19 @@ def app_specific_action(webdriver, datasets):
             
             # account login
             # input data into username field(admin)
-            page.get_element((By.ID, "login-form-username")).send_keys("admin")
-            attr_username = page.get_element((By.ID, "login-form-username")).get_attribute('value')
-            assert attr_username == "admin"
+            #page.get_element((By.ID, "login-form-username")).send_keys("admin")
+            #attr_username = page.get_element((By.ID, "login-form-username")).get_attribute('value')
+            #assert attr_username == "admin"
 
             # input data into password field(admin)
-            page.get_element((By.ID, "login-form-password")).send_keys("admin")
-            attr_password = page.get_element((By.ID, "login-form-password")).get_attribute('value')
-            assert attr_password == "admin"
+            #page.get_element((By.ID, "login-form-password")).send_keys("admin")
+            #attr_password = page.get_element((By.ID, "login-form-password")).get_attribute('value')
+            #assert attr_password == "admin"
 
             # click button "Login In"
-            attr_button_login = page.get_element((By.ID, "login-form-submit")).get_attribute('value')
-            assert attr_button_login == "Log In"
-            page.get_element((By.ID, "login-form-submit")).click()
+            #attr_button_login = page.get_element((By.ID, "login-form-submit")).get_attribute('value')
+            #assert attr_button_login == "Log In"
+            #page.get_element((By.ID, "login-form-submit")).click()
 
             # wait for summary field visible
             page.wait_until_presence_of_element_located((By.ID, 'summary-val'))
@@ -70,14 +70,14 @@ def app_specific_action(webdriver, datasets):
             page.get_element((By.ID, "admin_plugins_menu")).click()
 
             # input password(admin) into Administrator Access
-            page.get_element((By.ID, "login-form-authenticatePassword")).send_keys("admin")
-            attr_password_auth = page.get_element((By.ID, "login-form-authenticatePassword")).get_attribute('value')
-            assert attr_password_auth == 'admin'
+            #page.get_element((By.ID, "login-form-authenticatePassword")).send_keys("admin")
+            #attr_password_auth = page.get_element((By.ID, "login-form-authenticatePassword")).get_attribute('value')
+            #assert attr_password_auth == 'admin'
 
             # click on button Confirm
-            attr_button_auth = page.get_element((By.ID, "login-form-submit")).get_attribute('value')
-            assert attr_button_auth == "Confirm"
-            page.get_element((By.ID, "login-form-submit")).click()
+            #attr_button_auth = page.get_element((By.ID, "login-form-submit")).get_attribute('value')
+            #assert attr_button_auth == "Confirm"
+            #page.get_element((By.ID, "login-form-submit")).click()
 
             # click on link Smart Field Configuration
             configuration_text = page.get_element((By.ID, "smart-fields-config-link")).text
