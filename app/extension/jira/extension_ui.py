@@ -33,7 +33,7 @@ def app_specific_action(webdriver, datasets):
             login_page.wait_for_page_loaded()
         app_specific_user_login(username='admin', password='admin')
      measure()
-
+    
      @print_timing("selenium_app_custom_action")
      def measure():
          @print_timing("selenium_app_custom_action:view_issue")
