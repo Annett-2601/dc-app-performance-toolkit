@@ -197,7 +197,7 @@ def app_specific_action(webdriver, datasets):
              #page.wait_until_any_ec_text_presented_in_el((By.CSS_SELECTOR, '#projects > div > table > tbody > tr > td.cell-type-name > a'), 'SeleniumTest')
              #project_sel_text = page.get_element((By.CSS_SELECTOR, '#projects > div > table > tbody > tr > td.cell-type-name > a')).text
              #assert project_sel_text == "SeleniumTest"
-             page.get_element((By.CSS_SELECTOR, '#projects > div > table > tbody > tr > td.cell-type-name > a')).click()
+             #page.get_element((By.CSS_SELECTOR, '#projects > div > table > tbody > tr > td.cell-type-name > a')).click()
 
              # click on Edit button on  our issue
              page.wait_until_present((By.ID, 'edit-issue'))
