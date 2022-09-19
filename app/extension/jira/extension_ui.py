@@ -9,6 +9,7 @@ from selenium_ui.conftest import print_timing
 from selenium_ui.jira.pages.pages import Login
 from util.conf import JIRA_SETTINGS
 
+TIMEOUT = 20
 
 def app_specific_action(webdriver, datasets):
     page = BasePage(webdriver)
@@ -206,14 +207,14 @@ def app_specific_action(webdriver, datasets):
              page.get_element((By.ID, 'edit-issue')).click()
 
              # click on Configure Fields
-             page.wait_until_present((By.ID, 'qf-field-picker-trigger'))
-             config_fields_text = page.get_element((By.ID, 'qf-field-picker-trigger')).text
-             assert config_fields_text == "Configure Fields"
-             page.get_element((By.ID, 'qf-field-picker-trigger')).click()
+             #page.wait_until_present((By.ID, 'qf-field-picker-trigger'))
+             #config_fields_text = page.get_element((By.ID, 'qf-field-picker-trigger')).text
+             #assert config_fields_text == "Configure Fields"
+             #page.get_element((By.ID, 'qf-field-picker-trigger')).click()
 
 
              # click on checkbox Single Buffered
-             page.get_element((By.CSS_SELECTOR, '#qf-fieldpicker-inline > div > div > div.qf-picker-content > fieldset > ul > li:nth-child(13) > label > input[type=checkbox]')).click()
+             #page.get_element((By.CSS_SELECTOR, '#qf-fieldpicker-inline > div > div > div.qf-picker-content > fieldset > ul > li:nth-child(13) > label > input[type=checkbox]')).click()
 
              # input 42 into smart field
              page.wait_until_present((By.CSS_SELECTOR, '.select2-selection__placeholder'))
