@@ -56,7 +56,7 @@ def app_specific_action(webdriver, datasets):
              #assert attr_button_login == "Log In"
              #page.get_element((By.ID, "login-form-submit")).click()
 
-             wait for summary field visible
+             # wait for summary field visible
              page.wait_until_present((By.ID, 'summary-val'))
              summary_val_text = page.get_element((By.ID, 'summary-val')).text
              assert summary_val_text == "SEL-1"
