@@ -9,7 +9,7 @@ from selenium_ui.conftest import print_timing
 from selenium_ui.jira.pages.pages import Login
 from util.conf import JIRA_SETTINGS
 
-TIMEOUT = 20
+TIMEOUT = 150
 
 def app_specific_action(webdriver, datasets):
     page = BasePage(webdriver)
