@@ -10,6 +10,7 @@ from selenium_ui.jira.pages.pages import Login
 from util.conf import JIRA_SETTINGS
 
 
+
 def app_specific_action(webdriver, datasets):
     page = BasePage(webdriver)
     if datasets['custom_issues']:
@@ -231,7 +232,7 @@ def app_specific_action(webdriver, datasets):
 
              # check title of our new smart filed
              page.wait_until_present((By.CSS_SELECTOR, '#rowForcustomfield_11100 > .wrap > .name > label'))
-             sf_text = page.get_element((By.CSS_SELECTOR, 'rowForcustomfield_11100 > .wrap > .name > label')).text
+             sf_text = page.get_element((By.CSS_SELECTOR, '#rowForcustomfield_11100 > .wrap > .name > label')).text
              assert sf_text == 'Single Buffered:'
 
              # check custom field value
