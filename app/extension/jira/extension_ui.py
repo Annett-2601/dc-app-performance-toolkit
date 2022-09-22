@@ -255,8 +255,8 @@ def app_specific_action(webdriver, datasets):
              page.get_element((By.ID, 'edit-issue')).click() 
 
              # check value 97
-             page.wait_until_present((By.ID, '.select2-customfield_11100-container'))
-             input_field_text_new = page.get_element((By.ID, '.select2-customfield_11100-container')).text
+             page.wait_until_present((By.ID, 'select2-customfield_11100-container'))
+             input_field_text_new = page.get_element((By.ID, 'select2-customfield_11100-container')).text
              assert input_field_text_new == '97'
          
          sub_measure()
