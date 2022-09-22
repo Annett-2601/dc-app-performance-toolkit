@@ -9,7 +9,7 @@ from selenium_ui.conftest import print_timing
 from selenium_ui.jira.pages.pages import Login
 from util.conf import JIRA_SETTINGS
 
-TIMEOUT = 150
+TIMEOUT = 20
 
 def app_specific_action(webdriver, datasets):
     page = BasePage(webdriver)
@@ -217,12 +217,12 @@ def app_specific_action(webdriver, datasets):
              #page.get_element((By.CSS_SELECTOR, '#qf-fieldpicker-inline > div > div > div.qf-picker-content > fieldset > ul > li:nth-child(13) > label > input[type=checkbox]')).click()
 
              # input 42 into smart field
-             page.wait_until_present((By.CSS_SELECTOR, '.field-group > .select2'))
-             page.get_element((By.CSS_SELECTOR, '.field-group > .select2')).click()
-             page.wait_until_present((By.CSS_SELECTOR, '.select2-dropdown > .select2-search > input'))
-             page.get_element((By.CSS_SELECTOR, '.select2-dropdown > .select2-search > input')).send_keys('42')
-             page.get_element((By.CSS_SELECTOR, '.select2-dropdown > .select2-search > input')).send_keys(Keys.ENTER)
-             input_field_text = page.get_element((By.ID, '.select2-customfield_11100-container')).text
+             page.wait_until_present((By.CSS_SELECTOR, '.select2-selection__placeholder'))
+             page.get_element((By.CSS_SELECTOR, '.select2-selection__placeholder')).click()
+             page.wait_until_present((By.CSS_SELECTOR, '.select2-search__field'))
+             page.get_element((By.CSS_SELECTOR, '.select2-search__field')).send_keys('42')
+             page.get_element((By.CSS_SELECTOR, '.select2-search__field')).send_keys(Keys.ENTER)
+             input_field_text = page.get_element((By.ID, 'select2-customfield_11100-container')).text
              assert input_field_text == '42'
 
              # click on button "Update"
@@ -231,23 +231,23 @@ def app_specific_action(webdriver, datasets):
              page.get_element((By.ID, 'edit-issue-submit')).click()
 
              # check title of our new smart filed
-             page.wait_until_present((By.CSS_SELECTOR, '#rowForcustomfield_11100 > .wrap > .name > label'))
-             sf_text = page.get_element((By.CSS_SELECTOR, 'rowForcustomfield_11100 > .wrap > .name > label')).text
+             page.wait_until_present((By.CSS_SELECTOR, '#rowForcustomfield_11133 > div > strong'))
+             sf_text = page.get_element((By.CSS_SELECTOR, '#rowForcustomfield_11133 > div > strong')).text
              assert sf_text == 'Single Buffered:'
 
              # check custom field value
-             page.wait_until_present((By.ID, 'customfield_11100-val'))
-             value_text = page.get_element((By.ID, 'customfield_11100-val')).text
+             page.wait_until_present((By.ID, 'customfield_11133-val'))
+             value_text = page.get_element((By.ID, 'customfield_11133-val')).text
              assert value_text == '42'
 
              # change value of custom field
-             page.get_element((By.ID, 'customfield_11100-val')).click()
-             page.wait_until_present((By.ID, 'select2-customfield_11100-container'))
-             page.get_element((By.ID, 'select2-customfield_11100-container')).click()
-             page.wait_until_present((By.CSS_SELECTOR, '.select2-dropdown > .select2-search > input'))
-             page.get_element((By.CSS_SELECTOR, '.select2-dropdown > .select2-search > input')).send_keys('97')
-             page.get_element((By.CSS_SELECTOR, '.select2-dropdown > .select2-search > input')).send_keys(Keys.ENTER)
-             page.get_element((By.CSS_SELECTOR, '#customfield_11100-form > div.save-options > button.aui-button.submit')).click()
+             page.get_element((By.ID, 'customfield_11133-val')).click()
+             page.wait_until_present((By.ID, 'select2-customfield_11133-container'))
+             page.get_element((By.ID, 'select2-customfield_11133-container')).click()
+             page.wait_until_present((By.CSS_SELECTOR, '.select2-search__field'))
+             page.get_element((By.CSS_SELECTOR, '.select2-search__field')).send_keys('97')
+             page.get_element((By.CSS_SELECTOR, '.select2-search__field')).send_keys(Keys.ENTER)
+             page.get_element((By.CSS_SELECTOR, '#customfield_11133-form > div.save-options > button.aui-button.submit')).click()
             
              # click button Edit
              edit_btn_text = page.get_element((By.ID, 'edit-issue')).text
@@ -255,9 +255,10 @@ def app_specific_action(webdriver, datasets):
              page.get_element((By.ID, 'edit-issue')).click() 
 
              # check value 97
-             page.wait_until_present((By.ID, '.select2-customfield_11100-container'))
-             input_field_text_new = page.get_element((By.ID, '.select2-customfield_11100-container')).text
+             page.wait_until_present((By.CSS_SELECTOR, '.select2-selection__rendered'))
+             input_field_text_new = page.get_element((By.CSS_SELECTOR, '.select2-selection__rendered')).text
              assert input_field_text_new == '97'
+             #page.wait_until_any_ec_text_presented_in_el((By.ID, 'customfield_11133-val'), '97')
          
          sub_measure()
     measure()
