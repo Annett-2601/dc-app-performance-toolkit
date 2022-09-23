@@ -19,7 +19,7 @@ def app_specific_action(webdriver, datasets):
 #     To run action as specific user uncomment code bellow.
 #     NOTE: If app_specific_action is running as specific user, make sure that app_specific_action is running
 #     just before test_2_selenium_z_log_out action
-    
+
     @print_timing("selenium_app_specific_user_login")
     def measure():
         def app_specific_user_login(username='admin', password='admin'):
@@ -34,13 +34,13 @@ def app_specific_action(webdriver, datasets):
             login_page.wait_for_page_loaded()
         app_specific_user_login(username='admin', password='admin')
     measure()
-    
+
     @print_timing("selenium_app_custom_action")
     def measure():
          @print_timing("selenium_app_custom_action:view_issue")
          def sub_measure():
              page.go_to_url(f"{JIRA_SETTINGS.server_url}/browse/{issue_key}")
-            
+
              # account login
              # input data into username field(admin)
              #page.get_element((By.ID, "login-form-username")).send_keys("admin")
@@ -236,28 +236,28 @@ def app_specific_action(webdriver, datasets):
              assert sf_text == 'Single Buffered:'
 
              # check custom field value
-             page.wait_until_present((By.ID, 'customfield_11100-val'))
-             value_text = page.get_element((By.ID, 'customfield_11100-val')).text
-             assert value_text == '42'
+             #page.wait_until_present((By.ID, 'customfield_11100-val'))
+             #value_text = page.get_element((By.ID, 'customfield_11100-val')).text
+             #assert value_text == '42'
 
              # change value of custom field
-             page.get_element((By.ID, 'customfield_11100-val')).click()
-             page.wait_until_present((By.ID, 'select2-customfield_11100-container'))
-             page.get_element((By.ID, 'select2-customfield_11100-container')).click()
-             page.wait_until_present((By.CSS_SELECTOR, '.select2-dropdown > .select2-search > input'))
-             page.get_element((By.CSS_SELECTOR, '.select2-dropdown > .select2-search > input')).send_keys('97')
-             page.get_element((By.CSS_SELECTOR, '.select2-dropdown > .select2-search > input')).send_keys(Keys.ENTER)
-             page.get_element((By.CSS_SELECTOR, '#customfield_11100-form > div.save-options > button.aui-button.submit')).click()
-            
+             #page.get_element((By.ID, 'customfield_11100-val')).click()
+             #page.wait_until_present((By.ID, 'select2-customfield_11100-container'))
+             #page.get_element((By.ID, 'select2-customfield_11100-container')).click()
+             #page.wait_until_present((By.CSS_SELECTOR, '.select2-dropdown > .select2-search > input'))
+             #page.get_element((By.CSS_SELECTOR, '.select2-dropdown > .select2-search > input')).send_keys('97')
+             #page.get_element((By.CSS_SELECTOR, '.select2-dropdown > .select2-search > input')).send_keys(Keys.ENTER)
+             #page.get_element((By.CSS_SELECTOR, '#customfield_11100-form > div.save-options > button.aui-button.submit')).click()
+
              # click button Edit
-             edit_btn_text = page.get_element((By.ID, 'edit-issue')).text
-             assert edit_btn_text == 'Edit'
-             page.get_element((By.ID, 'edit-issue')).click() 
+             #edit_btn_text = page.get_element((By.ID, 'edit-issue')).text
+             #assert edit_btn_text == 'Edit'
+             #page.get_element((By.ID, 'edit-issue')).click()
 
              # check value 97
-             page.wait_until_present((By.ID, 'select2-customfield_11100-container'))
-             input_field_text_new = page.get_element((By.ID, 'select2-customfield_11100-container')).text
-             assert input_field_text_new == '97'
-         
+             #page.wait_until_present((By.ID, 'select2-customfield_11100-container'))
+             #input_field_text_new = page.get_element((By.ID, 'select2-customfield_11100-container')).text
+             #assert input_field_text_new == '97'
+
          sub_measure()
     measure()
