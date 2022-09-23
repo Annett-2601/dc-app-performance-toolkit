@@ -226,14 +226,14 @@ def app_specific_action(webdriver, datasets):
              assert input_field_text == '42'
 
              # click on button "Update"
-             update_button_text = page.get_element((By.ID, 'edit-issue-submit')).get_attribute('value')
-             assert update_button_text == "Update"
-             page.get_element((By.ID, 'edit-issue-submit')).click()
+             #update_button_text = page.get_element((By.ID, 'edit-issue-submit')).get_attribute('value')
+             #assert update_button_text == "Update"
+             #page.get_element((By.ID, 'edit-issue-submit')).click()
 
              # check title of our new smart filed
-             page.wait_until_present((By.CSS_SELECTOR, '#rowForcustomfield_11100 > .wrap > .name > label'))
-             sf_text = page.get_element((By.CSS_SELECTOR, '#rowForcustomfield_11100 > .wrap > .name > label')).text
-             assert sf_text == 'Single Buffered:'
+             #page.wait_until_present((By.CSS_SELECTOR, '#rowForcustomfield_11100 > .wrap > .name > label'))
+             #sf_text = page.get_element((By.CSS_SELECTOR, '#rowForcustomfield_11100 > .wrap > .name > label')).text
+             #assert sf_text == 'Single Buffered:'
 
              # check custom field value
              #page.wait_until_present((By.ID, 'customfield_11100-val'))
